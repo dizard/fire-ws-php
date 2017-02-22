@@ -165,22 +165,21 @@ class FireWSClient
      *
      * @param string $channel
      * @param string $userId
-     * @param null $connId
-     * @return mixed
+     * @return bool
      */
-    public function subscribe($channel, $userId, $connId = null) {
+    public function subscribe($channel, $userId) {
         if ($channel[0]!=='#') {
             return false;
         }
 
-        return $this->query([
+        $res =  $this->query([
             'action' => 'subscribe',
             'channel'  => $channel,
             'params' => [
-                'userId' => $userId,
-                'connId' => $connId
+                'userId' => $userId
             ]
         ]);
+        return $res['success'];
     }
 
     /**
@@ -191,22 +190,21 @@ class FireWSClient
      *
      * @param $channel
      * @param $userId
-     * @param null $connId
-     * @return mixed
+     * @return bool
      */
-    public function unsubscribe($channel, $userId, $connId = null) {
+    public function unsubscribe($channel, $userId) {
         if ($channel[0]!=='#') {
             return false;
         }
 
-        return $this->query([
+        $res = $this->query([
             'action' => 'unsubscribe',
             'channel'  => $channel,
             'params' => [
-                'userId' => $userId,
-                'connId' => $connId
+                'userId' => $userId
             ]
         ]);
+        return $res['success'];
     }
 
     /**
