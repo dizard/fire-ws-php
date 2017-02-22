@@ -158,6 +158,58 @@ class FireWSClient
     }
 
     /**
+     * Subscribe to private channel
+     * Private channel start of symbol #
+     *
+     * Example #privatechannel
+     *
+     * @param string $channel
+     * @param string $userId
+     * @param null $connId
+     * @return mixed
+     */
+    public function subscribe($channel, $userId, $connId = null) {
+        if ($channel[0]!=='#') {
+            return false;
+        }
+
+        return $this->query([
+            'action' => 'subscribe',
+            'channel'  => $channel,
+            'params' => [
+                'userId' => $userId,
+                'connId' => $connId
+            ]
+        ]);
+    }
+
+    /**
+     * Unsubscribe from private channel
+     * Private channel start of symbol #
+     *
+     * Example #privatechannel
+     *
+     * @param $channel
+     * @param $userId
+     * @param null $connId
+     * @return mixed
+     */
+    public function unsubscribe($channel, $userId, $connId = null) {
+        if ($channel[0]!=='#') {
+            return false;
+        }
+
+        return $this->query([
+            'action' => 'unsubscribe',
+            'channel'  => $channel,
+            'params' => [
+                'userId' => $userId,
+                'connId' => $connId
+            ]
+        ]);
+    }
+
+    /**
      * Return base state
      *
      * @param $channel

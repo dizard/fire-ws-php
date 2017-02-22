@@ -35,6 +35,12 @@ try{
 
     // get base state channel for user with $userId
     $stateChannel = $Client->get('@channel', $userId);
+    
+    // Subscribe to private channel
+    $Client->subscribe('#privateChannel', $userId);
+
+    // Unsubscribe from private channel
+    $Client->unsubscribe('#privateChannel', $userId);
 
     $channelInf = $Client->channelInfo('channel');
 }catch(\FireWSClient\Exceptions\FireWsException $e) {

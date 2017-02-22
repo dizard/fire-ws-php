@@ -5,7 +5,7 @@
   "keywords": ["FireWS", "FireWSClient", "WebSocket"],
   "license": "MIT",
   "homepage": "https://github.com/dizard/fire-ws-php",
-  "version": "1.0",
+  "version": "1.01",
   "authors": [
     {
       "name": "Mikhail Mankov",
