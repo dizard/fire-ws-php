@@ -1,7 +1,7 @@
 <?php
 namespace FireWSClient\Exceptions;
 
-class ConnectException extends FireWsException
+class ConnectException extends FireWSException
 {
 
 }

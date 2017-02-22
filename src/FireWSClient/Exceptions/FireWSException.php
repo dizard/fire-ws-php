@@ -1,7 +1,7 @@
 <?php
 namespace FireWSClient\Exceptions;
 
-class FireWsException extends \Exception
+class FireWSException extends \Exception
 {
 
 }
