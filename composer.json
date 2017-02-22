@@ -1,0 +1,23 @@
+{
+  "name": "dizard/fire-ws-php",
+  "type": "library",
+  "description": "PHP client for FireWS real-time messaging server and store",
+  "keywords": ["FireWS", "FireWSClient"],
+  "license": "MIT",
+  "homepage": "https://github.com/dizard/fire-ws-php",
+  "version": "1.0",
+  "authors": [
+    {
+      "name": "Mikhail Mankov",
+      "email": "expertcode@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "WS\\": "/src"
+    }
+  }
+}
