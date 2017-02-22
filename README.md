@@ -2,6 +2,9 @@
 
 composer require dizard/fire-ws-php
 
+For communicate with [Fire Web Socket Server](https://github.com/dizard/FireWebSocketServer) 
+
+
 **Example**
 ```php
 use FireWSClient\FireWSClient;
