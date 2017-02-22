@@ -1,7 +1,7 @@
 <?php
 namespace FireWSClient\Exceptions;
 
-class NameSpaceException extends FireWs
+class NameSpaceException extends FireWsException
 {
 
 }
