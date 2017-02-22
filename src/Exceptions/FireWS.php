@@ -1,7 +1,7 @@
 <?php
 namespace FireWSClient\Exceptions;
 
-class AuthException extends FireWs
+class FireWs extends \Exception
 {
 
 }
