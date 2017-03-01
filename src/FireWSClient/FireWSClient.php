@@ -11,15 +11,15 @@ class FireWSClient
     /**
      * @var resource
      */
-    private $_socket;
+    protected $_socket;
 
     /**
      * Chunk read max size bytes
      * @var int
      */
-    private $_chunkReadLimit = 1024;
+    protected $_chunkReadLimit = 1024;
 
-    private $_sKey;
+    protected $_sKey;
 
     /**
      * WS constructor.
@@ -158,6 +158,51 @@ class FireWSClient
     }
 
     /**
+     * Push to channel
+     *
+     * @param $channel
+     * @param $data
+     * @param null $user_id
+     * @param null $ttl
+     * @return mixed
+     */
+    public function push($channel, $data, $user_id=null, $ttl=null) {
+        return $this->query([
+            'action' => 'push',
+            'channel'  => $channel,
+            'data' => $data,
+            'params' => [
+                'userId' => $user_id,
+                'emit' => false,
+                'ttl' => $ttl
+            ]
+        ]);
+    }
+
+    /**
+     * Push base state and send message
+     *
+     * @param $channel
+     * @param $data
+     * @param null $user_id
+     * @param null $ttl
+     * @return mixed
+     */
+    public function pushAndSend($channel, $data, $user_id=null, $ttl=null) {
+        $res = $this->query([
+            'action' => 'push',
+            'channel'  => $channel,
+            'data' => $data,
+            'params' => [
+                'userId' => $user_id,
+                'emit' => true,
+                'ttl' => $ttl
+            ]
+        ]);
+        return $res['success'];
+    }
+
+    /**
      * Subscribe to private channel
      * Private channel start of symbol #
      *
@@ -240,7 +285,7 @@ class FireWSClient
 
 
 
-    private function query($data)
+    protected function query($data)
     {
         $data = json_encode($data);
         $finalPacket = pack('V', strlen($data)) . $data . "\x00";
