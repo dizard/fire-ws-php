@@ -254,7 +254,6 @@ class FireWSClient
         $answer = '';
         $chunkLimit = 1024;
         if ($needData > $chunkLimit) {
-            $needData = 0;
             $chunkSize = $this->_chunkReadLimit;
             while ($packet_data = fread($this->_socket, $chunkSize)) {
                 $needData -= $chunkSize;
