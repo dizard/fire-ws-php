@@ -49,7 +49,7 @@ class FireWSClient
         if ($userId===null || $sKey===null) {
             throw new AuthException('Need user id');
         }
-        return JWT::encode($userId, $sKey);
+        return JWT::encode(['i'=>$userId], $sKey);
     }
 
     /**
