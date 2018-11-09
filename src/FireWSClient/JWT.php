@@ -33,22 +33,22 @@ class JWT
     {
         $tks = explode('.', $jwt);
         if (count($tks) != 3) {
-            throw new Exception('Wrong number of segments');
+            throw new \Exception('Wrong number of segments');
         }
         list($headb64, $payloadb64, $cryptob64) = $tks;
         if (null === ($header = json_decode(self::urlsafeB64Decode($headb64)))) {
-            throw new Exception('Invalid segment encoding');
+            throw new \Exception('Invalid segment encoding');
         }
         if (null === $payload = json_decode(self::urlsafeB64Decode($payloadb64))) {
-            throw new Exception('Invalid segment encoding');
+            throw new \Exception('Invalid segment encoding');
         }
         $sig = self::urlsafeB64Decode($cryptob64);
         if (isset($key)) {
             if (empty($header->alg)) {
-                throw new DomainException('Empty algorithm');
+                throw new \DomainException('Empty algorithm');
             }
             if (!JWT::verifySignature($sig, "$headb64.$payloadb64", $key, $algo)) {
-                throw new UnexpectedValueException('Signature verification failed');
+                throw new \UnexpectedValueException('Signature verification failed');
             }
         }
         return $payload;
@@ -103,7 +103,7 @@ class JWT
             case 'RS512':
                 return self::generateRSASignature($input, $key, OPENSSL_ALGO_SHA512);
             default:
-                throw new Exception("Unsupported or invalid signing algorithm.");
+                throw new \Exception("Unsupported or invalid signing algorithm.");
         }
     }
 
